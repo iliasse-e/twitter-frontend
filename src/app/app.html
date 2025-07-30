@@ -1,0 +1,35 @@
+<header>
+  <nav>
+    <a id="nav-home" class="link" routerLink="/"><img src="twitter.png" alt="logo" id="logo" /></a>
+  </nav>
+
+  <div id="header-container">
+
+    <div id="main-container">
+      <button type="button" id="tweet-button" routerLink="/tweets/new">Tweet</button>
+
+      <div id="user-search-container">
+        <input type="search" [formControl]="userSearch" name="search-user" id="search-user" placeholder="Rechercher un utilisateur">
+        @if (userList.hasValue()) {
+          <user-list [users]="userList.value()"></user-list>
+        }
+      </div>
+    </div>
+
+    <div id="authentication-container">
+      @if (currentUser()) {
+        <span>{{currentUser()?.username}}</span>
+        <button type="button" id="logout-button" (click)="logout()">Se déconnecter</button>
+      }
+      @else {
+        <button type="button" id="login-button" routerLink="/sign-in">Se connecter</button>
+        <button type="button" id="signup-button" routerLink="/sign-up">S'inscrire</button>
+      }
+    </div>
+  </div>
+
+</header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>

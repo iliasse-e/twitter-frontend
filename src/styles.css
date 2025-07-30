@@ -1,0 +1,232 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/* Variables */
+
+:root {
+  --medium-size: 25px;
+  --small-size: 12px;
+  --high-size: 50px;
+
+  --primary-gray: #333;
+  --primary-blue: #1da1f2;
+  --primary-front: #1b1b1b;
+
+  --bg--gray: #f5f8fa;
+  --bg--gray--medium: #dddddd
+}
+
+/* Main structure */
+* {
+  font-weight: 600;
+}
+
+body {
+  height: 100vh;
+  max-width: 1800px;
+  margin: 0 auto;
+  background-color: var(--bg--gray);
+}
+
+header {
+  box-sizing: border-box;
+  height: 15vh;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--bg--gray--medium);
+}
+
+main {
+  box-sizing: border-box;
+  height: 75vh;
+  padding: var(--small-size) var(--medium-size);
+}
+
+button {
+  background-color: var(--primary-blue);
+  color: white;
+  border: none;
+  padding: 10px;
+  border: 3px var(--primary-gray) solid;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease, opacity 0.3s ease;
+}
+
+button:hover {
+  background-color: #116ca4;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+/* Header styles */
+
+#header-container {
+  width: 50%;
+  padding: var(--small-size) var(--medium-size);
+  display: flex;
+  justify-content: space-between;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: var(--medium-size);
+}
+
+nav .link {
+  display: block;
+  height: 100%;
+  line-height: inherit;
+  color: var(--primary-gray);
+  align-content: center;
+  text-decoration: none;
+  font-size: 17px;
+  padding: 0 var(--small-size);
+  border-bottom: 3px solid transparent;
+}
+
+nav .link:hover {
+  border-bottom: 3px solid var(--primary-blue);
+}
+
+nav .link.active {
+  border-bottom: 3px solid var(--primary-blue);
+}
+
+#search-user {
+  border-radius: 8px;
+  border: 3px var(--primary-gray) solid;
+  background-color: var(--bg--gray--medium);
+  color: var(--primary-front);
+  width: 200px;
+  height: 35px;
+}
+
+header img {
+  width: 30px;
+  height: 30px;
+}
+
+
+/* Pages */
+
+#tweets-container {
+  overflow-y: scroll;
+}
+
+#authentication-container, #main-container {
+  display: flex;
+  align-items: center;
+  gap: var(--small-size);
+}
+
+/* Card styles */
+
+.card {
+  border-radius: 8px;
+  border: 3px var(--primary-gray) solid;
+  padding: var(--small-size);
+}
+
+.card-title {
+  font-weight: 500;
+  font-size: 1.4em;
+}
+
+.card img {
+  border: 3px var(--primary-gray) solid;
+}
+
+/* Form styles */
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--small-size);
+  margin: auto;
+  width: 300px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  border: 3px var(--primary-gray) solid;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: var(--small-size);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+  border-color: var(--primary-blue);
+  outline: none;
+}
+
+/* Generic styles */
+p, small, a {
+  color: var(--primary-gray);
+}
+
+
+/* User search list */
+
+#user-search-container {
+  position: relative;
+}
+
+#user-search-container #user-dropdown {
+  position: absolute;
+}

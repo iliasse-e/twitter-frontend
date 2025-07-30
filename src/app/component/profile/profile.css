@@ -1,0 +1,10 @@
+#profile-card {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--small-size);
+}
+
+img {
+  object-fit: cover;
+}
