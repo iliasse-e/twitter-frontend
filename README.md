@@ -1,7 +1,9 @@
 # Twitter Angular
 
 Ce projet est une application Twitter simplifiée développée sous Angular.
-Le backend a été développé avec Node.js, Express et MongoDB.
+Le backend a été développé avec Node.js, Express et MongoDB, se trouvant dans le dépot suivant :
+
+https://github.com/iliasse-e/twitter
 
 ## Backend
 
