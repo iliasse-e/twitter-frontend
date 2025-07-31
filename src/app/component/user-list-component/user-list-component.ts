@@ -5,14 +5,14 @@ import { User } from '../../model/user.model';
   selector: 'user-list',
   imports: [],
   template: `
-    <section id="user-dropdown" class="dropdown-list hidden">
+    <datalist id="users" class="dropdown-list">
       @for (user of users(); track $index) {
         <article class="card">
           <img [src]="user.avatar" alt="">
           <p>{{user.username}}</p>
         </article>
       }
-    </section>
+    </datalist>
   `,
   styleUrl: './user-list-component.css'
 })

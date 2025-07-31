@@ -32,3 +32,13 @@ npm start
 - Suivi et désabonnement d’utilisateurs
 - Upload d’avatar
 - Recherche d’utilisateurs
+
+## TODO
+
+- Version amélioré du datalist des users
+- Suppression de tweet
+- Follow, unfollow
+- Authentication
+- Upload photo
+- Gestion de erreurs / Affichage des message
+- Authentication by JWT

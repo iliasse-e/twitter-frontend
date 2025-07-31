@@ -1,6 +1,6 @@
 <header>
   <nav>
-    <a id="nav-home" class="link" routerLink="/"><img src="twitter.png" alt="logo" id="logo" /></a>
+    <a id="nav-home" class="link" routerLink="/"><img src="logo-twitter.png" alt="logo" id="logo" /></a>
   </nav>
 
   <div id="header-container">
@@ -9,10 +9,15 @@
       <button type="button" id="tweet-button" routerLink="/tweets/new">Tweet</button>
 
       <div id="user-search-container">
-        <input type="search" [formControl]="userSearch" name="search-user" id="search-user" placeholder="Rechercher un utilisateur">
-        @if (userList.hasValue()) {
-          <user-list [users]="userList.value()"></user-list>
-        }
+        <input type="search" list="users" [formControl]="userSearch" name="search-user" id="search-user" placeholder="Rechercher un utilisateur">
+        <datalist id="users" class="dropdown-list">
+          @for (user of userList.value(); track $index) {
+            <option [value]="user.username">
+              <img [src]="user.avatar" alt="">
+              <p>{{user.username}}</p>
+            </option>
+          }
+        </datalist>
       </div>
     </div>
 

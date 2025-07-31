@@ -3,6 +3,7 @@ import { environment } from '../../environment';
 import { User } from '../model/user.model';
 
 const AUTH_URL = environment.apiUrl + '/auth';
+const USER_URL = environment.apiUrl + '/users'
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,7 @@ export class AuthenticationService {
   signout(): void {
     fetch(AUTH_URL + '/signout', {
       method: 'POST',
+      credentials: 'include'
     })
     .then(response => {
       if (!response.ok) {
@@ -55,12 +57,13 @@ export class AuthenticationService {
     });
   }
 
-  signup(email: string, username: string, password: string): void {
-    fetch(AUTH_URL + '/signup', {
+  signup(username: string, email: string, password: string): void {
+    fetch(USER_URL + '/signup', {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: 'include',
       body: JSON.stringify({email, username, password})
     })
     .then(response => {
@@ -70,10 +73,10 @@ export class AuthenticationService {
       return response.json();
     })
     .then(data => {
-      if (!data.user) {
+      if (!data) {
         throw new Error('No user data returned');
       }
-      this._currentUser.set(data?.user);
+      this._currentUser.set(data);
     })
     .catch(error => {
       console.error('Signup failed:', error);
