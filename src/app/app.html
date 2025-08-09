@@ -9,15 +9,25 @@
       <button type="button" id="tweet-button" routerLink="/tweets/new">Tweet</button>
 
       <div id="user-search-container">
-        <input type="search" list="users" [formControl]="userSearch" name="search-user" id="search-user" placeholder="Rechercher un utilisateur">
-        <datalist id="users" class="dropdown-list">
-          @for (user of userList.value(); track $index) {
-            <option [value]="user.username">
-              <img [src]="user.avatar" alt="">
-              <p>{{user.username}}</p>
-            </option>
-          }
-        </datalist>
+        <input
+          type="search"
+          list="users"
+          [formControl]="userSearch"
+          name="search-user"
+          id="search-user"
+          placeholder="Rechercher un utilisateur"
+          (clickOutside)="closeDropdown()"
+        >
+        @if (isSearchDropdownOpened()) {
+          <div id="user-dropdown" class="dropdown-list">
+            @for (user of userList.value(); track $index) {
+              <div class="card">
+                <img [src]="user.avatar" alt="">
+                <p>{{user.username}}</p>
+              </div>
+            }
+          </div>
+        }
       </div>
     </div>
 

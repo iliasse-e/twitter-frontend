@@ -228,6 +228,17 @@ p, small, a {
   position: relative;
 }
 
-#user-search-container #user-dropdown {
+#user-dropdown {
   position: absolute;
+  width: 100%;
+}
+
+#user-dropdown .card {
+  display: flex;
+  gap: 10px;
+  background-color: #f5f8fa;
+}
+
+#user-dropdown .card p {
+  align-content: center;
 }
