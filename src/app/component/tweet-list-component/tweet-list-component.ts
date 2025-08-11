@@ -4,6 +4,7 @@ import { AuthenticationService } from '../../services/authentication';
 import { TweetComponent } from "../tweet/tweet.component";
 import { TweetService } from '../../services/tweet';
 import { Tweet } from '../../model/tweet.model';
+import { first, take, tap } from 'rxjs';
 
 @Component({
   selector: 'app-tweet-list-component',
@@ -43,13 +44,11 @@ export class TweetListComponent {
 
   loadTweets(): void {
     this.#tweetService.getAllTweets()
-      .then(data => {
-        this.tweets.set(data);
-      })
-      .catch(error => {
-        console.error('Error loading tweets:', error);
-        this.errorMessage.set('Problème de chargement des tweets')
-      });
+      .pipe(
+        take(1),
+        tap(data => this.tweets.set(data)),
+      )
+      .subscribe();
   }
 
 }

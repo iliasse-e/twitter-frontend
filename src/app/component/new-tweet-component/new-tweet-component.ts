@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TweetService } from '../../services/tweet';
+import { first, tap } from 'rxjs';
 
 @Component({
   selector: 'app-new-tweet-component',
@@ -33,13 +34,11 @@ export class NewTweetComponent {
   submit(): void {
     if (this.form.valid) {
       this.#tweetService.createTweet(this.form.value.content)
-      .then(response => {
-        console.log('Tweet created successfully:', response);
-      })
-      .catch(error => {
-        console.error('Error creating tweet:', error);
-      });
-      this.form.reset();
+      .pipe(
+        first(),
+        tap(() => this.form.reset())
+      )
+      .subscribe()
     } else {
       console.error('Form invalid');
     }
