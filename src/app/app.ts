@@ -3,13 +3,12 @@ import { AuthenticationService } from './services/authentication';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter, tap } from 'rxjs';
-import { UsersSearch } from './services/users-search';
-import { UserListComponent } from './component/user-list-component/user-list-component';
+import { UsersSearchService } from './services/users-search';
 import { Clickoutside } from './directives/clickoutside';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterLink, RouterOutlet, ReactiveFormsModule, UserListComponent, Clickoutside],
+  imports: [RouterLink, RouterOutlet, ReactiveFormsModule, Clickoutside],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -19,7 +18,7 @@ export class App {
 
   #authenticationService = inject(AuthenticationService);
 
-  #userService = inject(UsersSearch);
+  #userService = inject(UsersSearchService);
 
   currentUser = this.#authenticationService.currentUser;
 
